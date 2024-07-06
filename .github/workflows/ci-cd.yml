@@ -37,7 +37,7 @@ jobs:
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+      
         script: |
           cd /path/to/your/project
           git pull origin main
