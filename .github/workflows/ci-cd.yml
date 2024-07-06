@@ -31,9 +31,6 @@ jobs:
 
     
 
-    - name: Build project
-      run: npm run build
-
     - name: Deploy to server
       if: github.ref == 'refs/heads/main'
       run: |

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "build": "echo 'Building project...' && mkdir -p dist && cp -R * dist/ && echo 'Build completed'"
+    "build": "echo 'Building project...' && mkdir -p dist && rsync -av --exclude='dist' . dist/ && echo 'Build completed'"
   },
   "keywords": [],
   "author": "",
