@@ -29,12 +29,18 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    
+  
 
-    - name: Deploy to server
+    - name: Deploy to VPS
       if: github.ref == 'refs/heads/main'
-      run: |
-        echo "Deploying to server..."
-        # Add your deployment script here
-        # For example, use rsync to copy files to your server
-        # rsync -avz --delete ./dist/ user@yourserver:/path/to/deploy
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /path/to/your/project
+          git pull origin main
+          npm install
+          npm run build
+          pm2 restart all
