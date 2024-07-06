@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/users', userRoutes);
 app.get("/home",(req,res) =>{
-  res.json("success261",)
+  res.json("success",)
 })
 const PORT = process.env.PORT || 3123;
 app.listen(PORT, () => {
