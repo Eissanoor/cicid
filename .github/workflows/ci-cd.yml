@@ -36,8 +36,8 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          mkdir -p /path/to/cicid
-          cd /path/to/cicid
+          mkdir -p /root/cicid
+          cd /root/cicid
           if [ ! -d ".git" ]; then
             git clone https://github.com/Eissanoor/cicid.git .
           else
