@@ -11,7 +11,7 @@ app.use('/users', userRoutes);
 app.get("/home",(req,res) =>{
   res.json("success2",)
 })
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3123;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
