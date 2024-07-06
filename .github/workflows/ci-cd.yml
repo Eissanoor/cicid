@@ -28,8 +28,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-   
-
     - name: Deploy to VPS
       if: github.ref == 'refs/heads/main'
       uses: appleboy/ssh-action@v0.1.5
@@ -38,8 +36,14 @@ jobs:
         username: ${{ secrets.VPS_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd .cicid/
-          git pull origin main
+          mkdir -p /path/to/cicid
+          cd /path/to/cicid
+          if [ ! -d ".git" ]; then
+            git clone https://github.com/Eissanoor/cicid.git .
+          else
+            git pull origin main
+          fi
           npm install
+          npm run build
           pm2 restart all
         debug: true
